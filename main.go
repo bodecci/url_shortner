@@ -22,7 +22,7 @@ func redirectToLongURL(w http.ResponseWriter, r *http.Request) {
 	//check if the short URL exists in the map
 	urlLock.RLock()
 	longURL, exists := shortURLs[short]
-	urlLock.Unlock()
+	urlLock.RUnlock()
 
 	if exists {
 		http.Redirect(w, r, longURL, http.StatusMovedPermanently) // redirect to long URL if found
