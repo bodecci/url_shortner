@@ -58,7 +58,7 @@ func base62Encode(n *big.Int) string {
 	zero := big.NewInt(0)
 
 	for n.Cmp(zero) > 0 {
-		quotient, remainder := new(big.Int), new(big.Int)
+		_, remainder := new(big.Int), new(big.Int)
 		n.DivMod(n, base, remainder)
 		encoded = string(base62Charset[remainder.Int64()]) + encoded
 	}
